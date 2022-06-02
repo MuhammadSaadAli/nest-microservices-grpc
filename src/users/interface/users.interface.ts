@@ -1,0 +1,11 @@
+export interface ICreateUser {
+  id: string;
+  email: string;
+  password: string;
+}
+
+export interface IAllUser {
+  id: string;
+  email: string;
+  password: string;
+}

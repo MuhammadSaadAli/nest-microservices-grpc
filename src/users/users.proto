@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package users;
+
+service CreateUserServices {
+    rpc Create (User) returns (User);
+}
+
+message User {
+    optional string id = 1;
+    string email = 2;
+    string password = 3;
+    // repeated int32 permissions  = 4;
+  }
+  
