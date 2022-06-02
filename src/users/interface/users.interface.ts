@@ -9,3 +9,8 @@ export interface IAllUser {
   email: string;
   password: string;
 }
+
+export interface IUpdateUser {
+  email?: string;
+  password?: string;
+}

@@ -2,14 +2,22 @@ syntax = "proto3";
 
 package users;
 
-service CreateUserServices {
+service UserServices {
     rpc Create (User) returns (User);
+    rpc GetUsers (Void) returns (User);
+    rpc DeleteUser (Delete) returns (User);
 }
 
-message User {
-    optional string id = 1;
-    string email = 2;
-    string password = 3;
-    // repeated int32 permissions  = 4;
-  }
-  
+// message
+
+message Void {}
+message Delete {
+    string id = 1;
+}
+    
+    message User {
+         optional string id = 1;
+                  string email = 2;
+                  string password = 3;
+        // repeated int32 permissions  = 4;
+      }
