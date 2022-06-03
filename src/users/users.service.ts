@@ -38,13 +38,13 @@ export class UsersService {
 
   updateUser(id: Iid, updateValue: IUpdateUser) {
     let updatedUser = this.allUsers.findIndex((user) => user.id === id.id);
-    if (updateValue.email.length == -1 && updateValue.password.length == -1) {
-      return;
-    }
-    if (updateValue.email.length != -1) {
+    // if (updateValue.email.length == 0 && updateValue.password.length == 0) {
+    //   return;
+    // }
+    if (updateValue.email.length != 0) {
       this.allUsers[updatedUser].email = updateValue.email;
     }
-    if (updateValue.password.length != -1) {
+    if (updateValue.password.length != 0) {
       this.allUsers[updatedUser].password = updateValue.password;
     }
   }

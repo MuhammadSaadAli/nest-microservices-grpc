@@ -37,6 +37,8 @@ export class UsersController {
 
   @GrpcMethod('UserServices', 'UpdateUser')
   updateUser(id: Iid, updateValue: IUpdateUser) {
-    return this.usersService.updateUser(id, updateValue);
+    const res = { data: this.usersService.updateUser(id, updateValue) };
+    console.log('res from controller : ', res);
+    return res;
   }
 }

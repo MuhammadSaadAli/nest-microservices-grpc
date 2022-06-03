@@ -6,7 +6,7 @@ service UserServices {
     rpc Create (User) returns (User);
     rpc GetUsers (Void) returns (AllUsers);
     rpc DeleteUser (OnlyId) returns (Void);
-    rpc UpdateUser (OnlyId) returns (User);
+    rpc UpdateUser (Update) returns (User);
 }
 
 // message
@@ -16,14 +16,13 @@ message OnlyId {
     string id = 1;
 }
     message Update {
-        optional string email = 1;
-        optional string password = 2;
+        string id = 1;
+        optional User data = 2;
     }
     message User {
          optional string id = 1;
-                  string email = 2;
-                  string password = 3;
-        // repeated int32 permissions  = 4;
+         optional string email = 2;
+         optional string password = 3;
       }
       message AllUsers {
         repeated User data = 1;
