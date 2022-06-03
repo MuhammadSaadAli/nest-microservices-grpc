@@ -25,7 +25,7 @@ export class UsersService {
     return user;
   }
 
-  getUser() {
+  getUser(): IAllUser[] {
     return this.allUsers;
   }
 
