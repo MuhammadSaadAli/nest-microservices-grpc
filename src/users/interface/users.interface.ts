@@ -14,3 +14,7 @@ export interface IUpdateUser {
   email?: string;
   password?: string;
 }
+
+export interface Iid {
+  id: string;
+}

@@ -2,7 +2,12 @@ import { Metadata, ServerUnaryCall } from '@grpc/grpc-js';
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
 import { createUserDto } from './dto/create-user.dto';
-import { IAllUser, ICreateUser } from './interface/users.interface';
+import {
+  IAllUser,
+  ICreateUser,
+  Iid,
+  IUpdateUser,
+} from './interface/users.interface';
 import { UsersService } from './users.service';
 
 @Controller('auth')
@@ -11,7 +16,7 @@ export class UsersController {
 
   @GrpcMethod('UserServices', 'Create')
   createUser(
-    @Body() data: createUserDto,
+    data: createUserDto,
     metaData: Metadata,
     call: ServerUnaryCall<any, any>,
   ): ICreateUser {
@@ -20,11 +25,18 @@ export class UsersController {
 
   @GrpcMethod('UserServices', 'GetUsers')
   getAllUser() {
-    return this.usersService.getUser();
+    const res = { data: this.usersService.getUser() };
+    return res;
   }
+
   @GrpcMethod('UserServices', 'DeleteUser')
   // @Delete('/:id')
-  deleteUser(id: string) {
+  deleteUser(id: any) {
     return this.usersService.deleteUser(id);
+  }
+
+  @GrpcMethod('UserServices', 'UpdateUser')
+  updateUser(id: Iid, updateValue: IUpdateUser) {
+    return this.usersService.updateUser(id, updateValue);
   }
 }

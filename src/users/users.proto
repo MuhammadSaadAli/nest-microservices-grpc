@@ -4,20 +4,27 @@ package users;
 
 service UserServices {
     rpc Create (User) returns (User);
-    rpc GetUsers (Void) returns (User);
-    rpc DeleteUser (Delete) returns (User);
+    rpc GetUsers (Void) returns (AllUsers);
+    rpc DeleteUser (OnlyId) returns (Void);
+    rpc UpdateUser (OnlyId) returns (User);
 }
 
 // message
 
 message Void {}
-message Delete {
+message OnlyId {
     string id = 1;
 }
-    
+    message Update {
+        optional string email = 1;
+        optional string password = 2;
+    }
     message User {
          optional string id = 1;
                   string email = 2;
                   string password = 3;
         // repeated int32 permissions  = 4;
       }
+      message AllUsers {
+        repeated User data = 1;
+    } 
