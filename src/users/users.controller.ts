@@ -14,18 +14,32 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
+  @Post()
+  async create(data: createUserDto) {
+    console.log('CreateUser');
+
+    const user = await this.usersService.createUser(data);
+    console.log(user);
+    return user;
+  }
+
   @GrpcMethod('UserServices', 'Create')
-  createUser(
+  async createUser(
     data: createUserDto,
-    metaData: Metadata,
-    call: ServerUnaryCall<any, any>,
-  ): ICreateUser {
-    return this.usersService.createUser(data, metaData, call);
+    metaData?: Metadata,
+    call?: ServerUnaryCall<any, any>,
+  ) {
+    console.log('CreateUser');
+
+    const user = await this.usersService.createUser(data);
+    console.log(user);
+    return user;
   }
 
   @GrpcMethod('UserServices', 'GetUsers')
-  getAllUser() {
-    const res = { data: this.usersService.getUser() };
+  async getAllUser() {
+    // const res = { data: this.usersService.getUser() };
+    const res = this.usersService.getUser();
     return res;
   }
 

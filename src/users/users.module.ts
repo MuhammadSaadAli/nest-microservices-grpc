@@ -3,8 +3,11 @@ import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { join } from 'path';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './users.entity';
 @Module({
   imports: [
+    TypeOrmModule.forFeature([User]),
     ClientsModule.register([
       {
         name: 'USERS_PACKAGE',
