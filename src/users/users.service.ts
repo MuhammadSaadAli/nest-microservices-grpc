@@ -16,9 +16,6 @@ export class UsersService {
   private allUsers: IAllUser[] = [];
 
   async createUser(data: createUserDto) {
-    console.log('Create user service');
-    console.log('User Data', data);
-
     const newUser = this.repo.create(data);
     console.log('newUser', newUser);
     return await this.repo.save(newUser);
