@@ -1,8 +1,8 @@
-export interface ICreateUser {
-  id: string;
-  email: string;
-  password: string;
-}
+// export interface ICreateUser {
+//   id: string;
+//   email: string;
+//   password: string;
+// }
 
 export interface IAllUser {
   id: string;
@@ -10,10 +10,10 @@ export interface IAllUser {
   password: string;
 }
 
-export interface IUpdateUser {
-  email?: string;
-  password?: string;
-}
+// export interface IUpdateUser {
+//   email?: string;
+//   password?: string;
+// }
 
 export interface Iid {
   id: string;

@@ -3,7 +3,7 @@ syntax = "proto3";
 package users;
 
 service UserServices {
-    rpc Create (User) returns (User);
+    rpc Create (Create) returns (User);
     rpc GetUsers (Void) returns (AllUsers);
     rpc DeleteUser (OnlyId) returns (Void);
     rpc UpdateUser (Update) returns (User);
@@ -18,6 +18,11 @@ message OnlyId {
     message Update {
         string id = 1;
         optional User data = 2;
+    }
+    message Create {
+        
+         string email = 1;
+         string password = 2;
     }
     message User {
          optional string id = 1;
