@@ -37,7 +37,7 @@ export class UsersController {
   }
 
   @GrpcMethod('UserServices', 'DeleteUser')
-  deleteUser(id: any) {
+  async deleteUser(id: any) {
     console.log('ID from controller: ', id.id);
     return this.usersService.deleteUser(id.id);
   }
